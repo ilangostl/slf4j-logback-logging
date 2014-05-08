@@ -1,6 +1,4 @@
 # slf4j with Logback Logging
-
-
 Logging using slf4j and Logback
 
 # Technology
@@ -12,8 +10,14 @@ Logging using slf4j and Logback
 With SBT on the path:
 sbt run
 
-## Explanation
+## UPDATE!!
+"scalalogging" is no more, although there is now a very similar "scala-logging". However, when I'm writing a system that uses AKKA I now do the following:
 
++ Include: "com.typesafe.akka" %% "akka-slf4j" % "2.3.2"
++ Include: "ch.qos.logback" % "logback-classic" % "1.0.13"
++ If using libraries that depend on log4j include: "org.slf4j" % "log4j-over-slf4j" % "1.7.7", and exclude the log4j from the dependencies that pull in log4j: exclude("log4j", "log4j") 
+
+## Explanation
 Logging should be simple. Using a scala wrapper for SLF4J and logback seems to accomplish the mission.
 
 [SLF4J](http://www.slf4j.org/) is a *simple logging facade for Java* that serves as a simple facade or abstraction for various logging frameworks (e.g. java.util.logging, logback, log4j) allowing the end user to plug in the desired logging framework at deployment time.
